@@ -1,35 +1,27 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Route, Routes } from "react-router";
+import Nav from "./components/Nav";
+import GrillHome from "./pages/GrillHome";
+import HudsonHome from "./pages/HudsonHome";
+import HudsonPost from "./pages/HudsonPost";
 
 function App() {
-  const [count, setCount] = useState(0)
+    return (
+        <>
+            <div className='min-w-screen min-h-screen h-screen w-screen bg-amber-50 p-4 flex flex-col justify-start items-center gap-5'>
+                <div className='max-w-screen-md w-full h-auto flex flex-col justify-center items-center overflow-hidden'>
+                    <Nav />
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+                    <Routes>
+                        <Route path='hudson'>
+                            <Route index element={<HudsonHome />} />
+                            <Route path=':postId' element={<HudsonPost />} />
+                        </Route>
+                        <Route path='grill' element={<GrillHome />} />
+                    </Routes>
+                </div>
+            </div>
+        </>
+    );
 }
 
-export default App
+export default App;
