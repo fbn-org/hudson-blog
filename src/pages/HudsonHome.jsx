@@ -34,7 +34,7 @@ export default function HudsonHome({}) {
             for (let path of files) {
                 await process(path).then((entry) => {
                     // entry.id = path.split("/").pop().split(".")[0];
-                    entry.id = `${entry.title}`;
+                    entry.id = encodeURIComponent(entry.title);
                     entries.push(entry);
                 });
             }
@@ -57,11 +57,11 @@ export default function HudsonHome({}) {
             <p className='w-auto font-bold text-5xl mt-4'>Hudson</p>
 
             {posts?.length > 0 && (
-                <div className='w-full max-w-screen-sm h-auto flex flex-col justify-start items-start gap-1'>
+                <div className='w-auto max-w-screen-sm h-auto flex flex-col justify-start items-start gap-1'>
                     {posts.map((entry, index) => (
                         <NavLink
                             to={`/hudson/${entry.id}`}
-                            className='w-auto h-auto flex flex-row justify-start items-center gap-3'
+                            className='w-auto h-auto flex flex-row justify-start items-start gap-3'
                             key={index}
                         >
                             <p className='font-bold'>{entry.date}</p>

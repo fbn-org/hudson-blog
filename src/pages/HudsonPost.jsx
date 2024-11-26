@@ -14,6 +14,7 @@ export default function HudsonPost({}) {
         console.log(files);
 
         async function fetchContent() {
+            const postIdDecoded = decodeURIComponent(postId);
             for (let path of files) {
                 fetch(path)
                     .then((res) => res.text())
@@ -22,7 +23,8 @@ export default function HudsonPost({}) {
                         const lines = text.split("\n");
                         const date = lines[0].split(":")[1].trim();
                         const title = lines[1].split(":")[1].trim();
-                        if (`${title}` === postId) {
+
+                        if (title === postIdDecoded) {
                             setContent(lines.slice(2).join("\n"));
                         }
                     });
@@ -33,9 +35,9 @@ export default function HudsonPost({}) {
     }, [postId]);
 
     return (
-        <div className='min-w-screen w-full overflow-auto px-5 flex flex-col items-center justify-start h-full'>
+        <div className='min-w-screen w-full overflow-auto px-5 flex flex-col items-center justify-start'>
             <Markdown
-                className='max-w-screen-md prose prose-lg prose-neutral mt-2 w-full'
+                className='max-w-screen-md prose prose-lg prose-neutral mt-2 w-full h-auto'
                 remarkPlugins={[remarkGfm]}
                 rehypePlugins={[rehypeRaw]}
                 urlTransform={(url) => {
