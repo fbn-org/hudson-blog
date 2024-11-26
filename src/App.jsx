@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router";
+import { Navigate, Route, Routes } from "react-router";
 import Nav from "./components/Nav";
 import GrillHome from "./pages/GrillHome";
 import HudsonHome from "./pages/HudsonHome";
@@ -12,6 +12,7 @@ function App() {
                     <Nav />
 
                     <Routes>
+                        <Route index element={<Navigate to='/hudson' />} />
                         <Route path='hudson'>
                             <Route index element={<HudsonHome />} />
                             <Route path=':postId' element={<HudsonPost />} />
