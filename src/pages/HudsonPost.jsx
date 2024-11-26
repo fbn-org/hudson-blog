@@ -40,6 +40,9 @@ export default function HudsonPost({}) {
                 rehypePlugins={[rehypeRaw]}
                 urlTransform={(url) => {
                     if (url.startsWith("/images")) {
+                        if (import.meta.env.DEV) {
+                            return `/posts/hudson${url}`;
+                        }
                         return `https://github.com/fbn-org/hudson-blog/blob/main/posts/hudson${url}?raw=true`;
                     } else {
                         return url;
