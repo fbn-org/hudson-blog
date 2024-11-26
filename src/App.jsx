@@ -8,7 +8,7 @@ function App() {
     return (
         <>
             <div className='min-w-screen min-h-screen h-screen w-screen bg-amber-50 p-4 flex flex-col justify-start items-center gap-5'>
-                <div className='max-w-screen-md w-full h-auto flex flex-col justify-center items-center overflow-hidden'>
+                <div className=' w-full h-auto flex flex-col justify-center items-center overflow-hidden'>
                     <Nav />
 
                     <Routes>

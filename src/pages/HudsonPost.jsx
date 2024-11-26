@@ -14,17 +14,17 @@ export default function HudsonPost({}) {
         console.log(files);
 
         async function fetchContent() {
-            const path = files.find((path) => path.includes(postId));
-            if (path) {
+            for (let path of files) {
                 fetch(path)
                     .then((res) => res.text())
                     .then((text) => {
                         // the first line is the date and the second line is the title
                         const lines = text.split("\n");
-
-                        console.log(lines.join("\n"));
-
-                        setContent(lines.slice(2).join("\n"));
+                        const date = lines[0].split(":")[1].trim();
+                        const title = lines[1].split(":")[1].trim();
+                        if (`${title}` === postId) {
+                            setContent(lines.slice(2).join("\n"));
+                        }
                     });
             }
         }
@@ -33,9 +33,9 @@ export default function HudsonPost({}) {
     }, [postId]);
 
     return (
-        <div className='min-w-full overflow-auto px-5'>
+        <div className='min-w-screen w-full overflow-auto px-5 flex flex-col items-center justify-start h-full'>
             <Markdown
-                className='prose prose-lg prose-neutral mt-2 min-w-full'
+                className='max-w-screen-md prose prose-lg prose-neutral mt-2 w-full'
                 remarkPlugins={[remarkGfm]}
                 rehypePlugins={[rehypeRaw]}
                 urlTransform={(url) => {

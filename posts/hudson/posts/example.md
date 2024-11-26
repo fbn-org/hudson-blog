@@ -1,5 +1,5 @@
-11/24
-Philly Might be the Place for me
+date:11/24
+title:Philly Might be the Place for me
 
 # Philly Might be the Place for me
 

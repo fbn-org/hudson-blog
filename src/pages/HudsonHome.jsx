@@ -18,8 +18,8 @@ export default function HudsonHome({}) {
                     .then((text) => {
                         // the first line is the date and the second line is the title
                         const lines = text.split("\n");
-                        const date = lines[0];
-                        const title = lines[1];
+                        const date = lines[0].split(":")[1].trim();
+                        const title = lines[1].split(":")[1].trim();
 
                         resolve({ date, title });
                     });
@@ -33,7 +33,8 @@ export default function HudsonHome({}) {
             let entries = [];
             for (let path of files) {
                 await process(path).then((entry) => {
-                    entry.id = path.split("/").pop().split(".")[0];
+                    // entry.id = path.split("/").pop().split(".")[0];
+                    entry.id = `${entry.title}`;
                     entries.push(entry);
                 });
             }
