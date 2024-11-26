@@ -7,4 +7,4 @@ I would like to say this blog is the first time I'm really choosing to put mysel
 
 With that being said, welcome to my blog!
 
-![pfp](/images/pfp.jpeg)
+![pfp](/content/hudson/images/pfp.jpeg)

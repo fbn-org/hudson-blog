@@ -10,7 +10,7 @@ export default function HudsonPost({}) {
     const [content, setContent] = useState("# hello");
 
     useEffect(() => {
-        const files = Object.values(import.meta.glob("/posts/hudson/posts/*.md", { eager: true, import: "default" }));
+        const files = Object.values(import.meta.glob("/content/hudson/posts/*.md", { eager: true, import: "default" }));
         console.log(files);
 
         async function fetchContent() {
@@ -41,11 +41,12 @@ export default function HudsonPost({}) {
                 remarkPlugins={[remarkGfm]}
                 rehypePlugins={[rehypeRaw]}
                 urlTransform={(url) => {
-                    if (url.startsWith("/images")) {
+                    if (url.startsWith("/content")) {
                         if (import.meta.env.DEV) {
-                            return `/posts/hudson${url}`;
+                            return `${url}`;
+                        } else {
+                            return `https://github.com/fbn-org/hudson-blog/blob/main${url}?raw=true`;
                         }
-                        return `https://github.com/fbn-org/hudson-blog/blob/main/posts/hudson${url}?raw=true`;
                     } else {
                         return url;
                     }

@@ -28,7 +28,7 @@ export default function HudsonHome({}) {
 
         async function fetchEntries() {
             const files = Object.values(
-                import.meta.glob("/posts/hudson/posts/*.md", { eager: true, import: "default" })
+                import.meta.glob("/content/hudson/posts/*.md", { eager: true, import: "default" })
             );
             let entries = [];
             for (let path of files) {
