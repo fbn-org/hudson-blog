@@ -8,3 +8,5 @@ I would like to say this blog is the first time I'm really choosing to put mysel
 With that being said, welcome to my blog!
 
 ![pfp](/content/hudson/images/pfp.jpeg)
+
+blah blah blah
