@@ -5,5 +5,10 @@ import { defineConfig } from "vite";
 export default defineConfig({
     plugins: [react()],
     assetsInclude: ["**/*.md"],
-    base: "/",
+    base: "./",
+    root: "./",
+    // publicDir: "public",
+    build: {
+        outDir: "dist",
+    },
 });

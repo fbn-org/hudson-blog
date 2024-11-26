@@ -27,9 +27,11 @@ export default function HudsonHome({}) {
         }
 
         async function fetchEntries() {
-            const files = import.meta.glob("/posts/hudson/posts/*.md");
+            const files = Object.values(
+                import.meta.glob("/posts/hudson/posts/*.md", { eager: true, import: "default" })
+            );
             let entries = [];
-            for (const path in files) {
+            for (let path of files) {
                 await process(path).then((entry) => {
                     entry.id = path.split("/").pop().split(".")[0];
                     entries.push(entry);
@@ -42,6 +44,8 @@ export default function HudsonHome({}) {
                 const dateB = new Date(b.date);
                 return dateB - dateA;
             });
+
+            console.log(entries);
 
             return entries;
         }

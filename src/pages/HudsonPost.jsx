@@ -9,10 +9,11 @@ export default function HudsonPost({}) {
     const [content, setContent] = useState("# hello");
 
     useEffect(() => {
-        const files = import.meta.glob("/posts/hudson/posts/*.md");
+        const files = Object.values(import.meta.glob("/posts/hudson/posts/*.md", { eager: true, import: "default" }));
+        console.log(files);
 
         async function fetchContent() {
-            const path = Object.keys(files).find((path) => path.includes(postId));
+            const path = files.find((path) => path.includes(postId));
             if (path) {
                 fetch(path)
                     .then((res) => res.text())
@@ -20,7 +21,7 @@ export default function HudsonPost({}) {
                         // the first line is the date and the second line is the title
                         const lines = text.split("\n");
 
-                        console.log(lines);
+                        // console.log(lines);
 
                         setContent(lines.slice(2).join("\n"));
                     });

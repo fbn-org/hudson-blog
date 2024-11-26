@@ -10,4 +10,4 @@ Driving through the city to our hotel, I was struck by the pleasant beauty of th
 Tonight we're going to dinner at a very fancy restaurant, but first my fantastic friends said they want to help me make a blog. I guess we'll see how that goes.
 
 Here's a picture of me Eric took somewhat recently to test how images work:
-![hudson](/hudson/images/test.jpeg)
+![hudson](../images/test.jpeg)
