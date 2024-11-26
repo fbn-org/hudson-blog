@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Markdown from "react-markdown";
 import { useParams } from "react-router";
+import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
 
 export default function HudsonPost({}) {
@@ -21,7 +22,7 @@ export default function HudsonPost({}) {
                         // the first line is the date and the second line is the title
                         const lines = text.split("\n");
 
-                        // console.log(lines);
+                        console.log(lines.join("\n"));
 
                         setContent(lines.slice(2).join("\n"));
                     });
@@ -36,7 +37,14 @@ export default function HudsonPost({}) {
             <Markdown
                 className='prose prose-lg prose-neutral mt-2 min-w-full'
                 remarkPlugins={[remarkGfm]}
-                // rehypePlugins={[rehypeRaw]}
+                rehypePlugins={[rehypeRaw]}
+                urlTransform={(url) => {
+                    if (url.startsWith("/images")) {
+                        return `https://github.com/fbn-org/hudson-blog/blob/main/posts/hudson${url}?raw=true`;
+                    } else {
+                        return url;
+                    }
+                }}
             >
                 {content}
             </Markdown>
