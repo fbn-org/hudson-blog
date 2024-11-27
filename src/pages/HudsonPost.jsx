@@ -38,26 +38,28 @@ export default function HudsonPost({}) {
     }, [postId]);
 
     return (
-        <div className='max-w-screen-md min-w-screen-md overflow-auto px-5 flex flex-col items-center justify-start'>
-            <p className='w-full text-start'>{dayjs(date).format("MMMM D, YYYY")}</p>
-            <Markdown
-                className='prose prose-lg prose-neutral mt-2 w-full h-auto'
-                remarkPlugins={[remarkGfm]}
-                rehypePlugins={[rehypeRaw]}
-                urlTransform={(url) => {
-                    if (url.startsWith("/content")) {
-                        if (import.meta.env.DEV) {
-                            return `${url}`;
+        <div className='w-full overflow-auto flex flex-col items-center justify-start'>
+            <div className='max-w-screen-md min-w-screen-md h-auto flex flex-col items-center justify-start px-5 mb-5'>
+                <p className='w-full text-start'>{dayjs(date).format("MMMM D, YYYY")}</p>
+                <Markdown
+                    className='prose prose-lg prose-neutral mt-2 w-full h-auto'
+                    remarkPlugins={[remarkGfm]}
+                    rehypePlugins={[rehypeRaw]}
+                    urlTransform={(url) => {
+                        if (url.startsWith("/content")) {
+                            if (import.meta.env.DEV) {
+                                return `${url}`;
+                            } else {
+                                return `https://github.com/fbn-org/hudson-blog/blob/main${url}?raw=true`;
+                            }
                         } else {
-                            return `https://github.com/fbn-org/hudson-blog/blob/main${url}?raw=true`;
+                            return url;
                         }
-                    } else {
-                        return url;
-                    }
-                }}
-            >
-                {content}
-            </Markdown>
+                    }}
+                >
+                    {content}
+                </Markdown>
+            </div>
         </div>
     );
 }
