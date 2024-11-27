@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import dayjs from "dayjs";
+import { useEffect, useMemo, useState } from "react";
 import { NavLink } from "react-router";
 
 export default function HudsonHome({}) {
@@ -52,9 +53,24 @@ export default function HudsonHome({}) {
         }
     }, []);
 
+    const daysSincePost = useMemo(() => {
+        if (posts.length === 0) return 0;
+        const latest = posts[0];
+        const latestDate = dayjs(latest.date);
+        const diff = dayjs().diff(latestDate, "day");
+
+        return diff;
+    }, [posts]);
+
     return (
-        <div className='w-full h-auto flex flex-col justify-start items-center gap-5'>
-            <p className='w-auto font-bold text-5xl mt-4'>Hudson</p>
+        <div className='w-full h-auto flex flex-col justify-start items-center gap-5 overflow-auto'>
+            <div className='w-full h-auto flex flex-col justify-start items-center gap-1'>
+                <p className='w-auto font-bold text-5xl mt-4'>Hudson</p>
+                <p className=''>days since last post: {daysSincePost}</p>
+                {daysSincePost > 7 && (
+                    <p className='text-red-500 font-bold'>per the agreement, hudson must cut off a finger.</p>
+                )}
+            </div>
 
             {posts?.length > 0 && (
                 <div className='w-auto max-w-screen-sm h-auto flex flex-col justify-start items-start gap-1'>
@@ -64,7 +80,7 @@ export default function HudsonHome({}) {
                             className='w-auto h-auto flex flex-row justify-start items-start gap-3'
                             key={index}
                         >
-                            <p className='font-bold'>{entry.date}</p>
+                            <p className='font-bold'>{dayjs(entry.date).format("MM/DD/YY")}</p>
                             <p className='underline'>{entry.title}</p>
                         </NavLink>
                     ))}

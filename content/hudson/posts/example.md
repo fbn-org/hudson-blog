@@ -1,4 +1,4 @@
-date:11/24
+date:11/24/2024
 title:Philly Might be the Place for me
 
 # Philly Might be the Place for me

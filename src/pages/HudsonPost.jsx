@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import { useEffect, useState } from "react";
 import Markdown from "react-markdown";
 import { useParams } from "react-router";
@@ -8,6 +9,7 @@ export default function HudsonPost({}) {
     const postId = useParams().postId;
 
     const [content, setContent] = useState("# hello");
+    const [date, setDate] = useState("");
 
     useEffect(() => {
         const files = Object.values(import.meta.glob("/content/hudson/posts/*.md", { eager: true, import: "default" }));
@@ -26,6 +28,7 @@ export default function HudsonPost({}) {
 
                         if (title === postIdDecoded) {
                             setContent(lines.slice(2).join("\n"));
+                            setDate(date);
                         }
                     });
             }
@@ -35,9 +38,10 @@ export default function HudsonPost({}) {
     }, [postId]);
 
     return (
-        <div className='min-w-screen w-full overflow-auto px-5 flex flex-col items-center justify-start'>
+        <div className='max-w-screen-md min-w-screen-md overflow-auto px-5 flex flex-col items-center justify-start'>
+            <p className='w-full text-start'>{dayjs(date).format("MMMM D, YYYY")}</p>
             <Markdown
-                className='max-w-screen-md prose prose-lg prose-neutral mt-2 w-full h-auto'
+                className='prose prose-lg prose-neutral mt-2 w-full h-auto'
                 remarkPlugins={[remarkGfm]}
                 rehypePlugins={[rehypeRaw]}
                 urlTransform={(url) => {
