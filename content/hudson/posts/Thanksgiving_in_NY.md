@@ -1,5 +1,6 @@
-date:11/29/2024
-title:Thanksgiving in New York
+| date       | title                    |
+| ---------- | ------------------------ |
+| 11/29/2024 | Thanksgiving in New York |
 
 # Thanksgiving in New York
 

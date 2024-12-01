@@ -1,10 +1,9 @@
 import dayjs from "dayjs";
 import { useEffect, useMemo, useState } from "react";
 import { NavLink } from "react-router";
+import { mdTableJson } from "../utils/utils";
 
 export default function HudsonHome({}) {
-    // const entries = useState([]);
-
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
@@ -19,10 +18,11 @@ export default function HudsonHome({}) {
                     .then((text) => {
                         // the first line is the date and the second line is the title
                         const lines = text.split("\n");
-                        const date = lines[0].split(":")[1].trim();
-                        const title = lines[1].split(":")[1].trim();
+                        const metadata = lines.slice(0, 4).join("\n");
 
-                        resolve({ date, title });
+                        const json = mdTableJson(metadata);
+
+                        resolve({ date: json.date, title: json.title });
                     });
             });
         }
@@ -46,8 +46,6 @@ export default function HudsonHome({}) {
                 const dateB = new Date(b.date);
                 return dateB - dateA;
             });
-
-            console.log(entries);
 
             return entries;
         }
