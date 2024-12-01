@@ -61,9 +61,9 @@ export default function HudsonHome({}) {
     }, [posts]);
 
     return (
-        <div className='w-full h-auto flex flex-col justify-start items-center gap-5 overflow-auto'>
+        <div className='w-full h-auto flex flex-col justify-start items-center gap-5 overflow-auto p-5'>
             <div className='w-full h-auto flex flex-col justify-start items-center gap-1'>
-                <p className='w-auto font-bold text-5xl mt-4'>Hudson</p>
+                <p className='w-auto font-bold text-5xl'>Hudson</p>
                 <p className=''>days since last post: {daysSincePost}</p>
                 {daysSincePost > 7 && (
                     <p className='text-red-500 font-bold'>per the agreement, hudson must cut off a finger.</p>

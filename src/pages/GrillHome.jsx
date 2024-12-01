@@ -32,7 +32,10 @@ export default function HudsonHome({}) {
 
         async function fetchEntries() {
             let content = "";
-            await process("/content/grill/content.md").then((entry) => {
+            const file = Object.values(
+                import.meta.glob("/content/grill/content.md", { eager: true, import: "default" })
+            )[0];
+            await process(file).then((entry) => {
                 console.log(entry);
                 content = entry.content;
             });
@@ -43,7 +46,7 @@ export default function HudsonHome({}) {
     return (
         <div className='w-full h-auto flex flex-col justify-start items-center gap-5 overflow-auto p-5'>
             <div className='w-full h-auto flex flex-col justify-start items-center gap-1'>
-                <p className='w-auto font-bold text-5xl mt-4'>Grill</p>
+                <p className='w-auto font-bold text-5xl'>Grill</p>
             </div>
 
             {content?.length > 0 && (
