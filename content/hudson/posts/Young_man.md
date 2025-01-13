@@ -8,6 +8,6 @@
 
 ![Bille Eilish](/content/hudson/images/Childhood/IMG_6157.jpg)
 
-![Fighter Pilot](/content/hudson/images/Childhood/DSC_4220.jpgg)
+![Fighter Pilot](/content/hudson/images/Childhood/DSC_4220.jpg)
 
 ![Grand Entrance](/content/hudson/images/Childhood/IMG_2638.jpg)
