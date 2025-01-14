@@ -2,43 +2,26 @@ import { useEffect, useState } from "react";
 import Markdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
-import { mdTableJson, transformUrl } from "../utils/utils";
+import { transformUrl } from "../utils/utils";
 
 export default function HudsonHome({}) {
     const [content, setContent] = useState("");
 
     useEffect(() => {
         fetchEntries().then((content) => {
-            console.log(content);
             setContent(content);
         });
 
-        async function process(file) {
-            return new Promise((resolve) => {
-                fetch(file)
-                    .then((res) => res.text())
-                    .then((text) => {
-                        // the first line is the date and the second line is the title
-                        const lines = text.split("\n");
-                        const metadata = lines.slice(0, 4).join("\n");
-                        const content = lines.slice(4).join("\n");
-
-                        const json = mdTableJson(metadata);
-
-                        resolve({ date: json.date, title: json.title, content });
-                    });
-            });
-        }
-
         async function fetchEntries() {
-            let content = "";
             const file = Object.values(
                 import.meta.glob("/content/grill/content.md", { eager: true, import: "default" })
             )[0];
-            await process(file).then((entry) => {
-                console.log(entry);
-                content = entry.content;
-            });
+            let content = await fetch(file)
+                .then((res) => res.text())
+                .then((text) => {
+                    return text;
+                });
+
             return content;
         }
     }, []);

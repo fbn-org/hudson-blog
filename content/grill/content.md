@@ -1,8 +1,3 @@
-| date       | tbh just ignore the stuff up here |
-| ---------- | --------------------------------- |
-| 11/29/2024 | 
-
-
 Grill numer uno: Washington Quad grill
 
 rating: 4/10
