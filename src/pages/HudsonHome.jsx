@@ -61,7 +61,7 @@ export default function HudsonHome({}) {
     }, [posts]);
 
     return (
-        <div className='w-full h-auto flex flex-col justify-start items-center gap-5 overflow-auto p-5'>
+        <div className='w-full h-full flex flex-col justify-start items-center gap-5 overflow-auto p-5'>
             <div className='w-full h-auto flex flex-col justify-start items-center gap-1'>
                 <p className='w-auto font-bold text-5xl'>Hudson</p>
                 <p className=''>days since last post: {daysSincePost}</p>
