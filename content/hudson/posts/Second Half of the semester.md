@@ -28,7 +28,6 @@ I give away weekend a lot of shit cause its so far away (OBX is like 6 hours - 8
 
 # 4. Big moves
 
-Iykyk
 
 # 5. Boeing
 
