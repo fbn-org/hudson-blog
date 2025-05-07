@@ -32,7 +32,7 @@ Iykyk
 
 # 5. Boeing
 
-![Hot Cheeto](/content/hudson/images/Second_Half_of_the_semester)
+![Plane](/content/hudson/images/Second_Half_of_the_semester)
 
 
 I got Boeing. Going to Everett WA to be an Airplane Systems Engineer intern (no idea what that means but I like the words). Crazy last minute. Incredably over the moon and incredably fortunate. Flying on a 737 is what got me into aerospace engineering and airplanes in the first place so this is pretty much a dream come true. My office is literally right next to the plant where they build the planes
