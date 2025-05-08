@@ -7,7 +7,7 @@ import HudsonPost from "./pages/HudsonPost";
 function App() {
     return (
         <>
-            <div className='min-w-screen h-screen w-screen  flex flex-col justify-start items-center gap-5'>
+            <div className='min-w-screen h-auto w-screen flex flex-col justify-start items-center gap-5'>
                 <div className=' w-full h-auto flex flex-col justify-center items-center'>
                     <Nav />
 

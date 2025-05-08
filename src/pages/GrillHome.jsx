@@ -27,7 +27,7 @@ export default function HudsonHome({}) {
     }, []);
 
     return (
-        <div className='w-full h-auto flex flex-col justify-start items-center gap-5 overflow-auto p-5'>
+        <div className='w-full h-auto flex flex-col justify-start items-center gap-5 overflow-auto p-5 box-border'>
             <div className='w-full h-auto flex flex-col justify-start items-center gap-1'>
                 <p className='w-auto font-bold text-5xl'>Grill</p>
             </div>
